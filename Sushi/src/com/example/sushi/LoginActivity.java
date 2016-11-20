@@ -11,34 +11,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity{
-	private TextView textView_register;//"娉ㄥ唽"鎸夐挳
-	private TextView textView_login;//"鐧诲綍"鎸夐挳
+	private TextView textView_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_layout);
-        textView_register= (TextView) findViewById(R.id.register);
+        setContentView(R.layout.login);
         textView_login= (TextView) findViewById(R.id.login);
         
-        //璺宠浆鍒?娉ㄥ唽"椤甸潰
-        textView_register.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent=new Intent();
-				//intent.setClass(LoginActivity.this,RegisterActivity.class);
-				startActivity(intent);
-			}
-		});        
-        //璺宠浆鍒?鐧诲綍"椤甸潰
+        
         textView_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//璐︽埛
+				
 				EditText usernametext=(EditText) findViewById(R.id.usernametext);
 				String username=usernametext.getText().toString().trim();
-				//瀵嗙爜
+				
 				EditText passwordtext=(EditText) findViewById(R.id.passwordtext);
 				String password=passwordtext.getText().toString().trim();
 				if ("".equals(username)) {
@@ -50,16 +37,13 @@ public class LoginActivity extends Activity{
 					return;
 				}
 				if ((!"123".equals(password))||(!"admin".equals(username))) {
-					Toast.makeText(LoginActivity.this,"请输入正确密码",Toast.LENGTH_SHORT).show();
+					Toast.makeText(LoginActivity.this,"用户名或密码不正确",Toast.LENGTH_SHORT).show();
 					
 					return;
 				}
-				Intent intent = new Intent();
-				Bundle bundle = new Bundle();
-				bundle.putString("username", username);
-				bundle.putString("password", password);
-				intent.putExtras(bundle);
-				intent.setClass(LoginActivity.this,MainActivity.class);
+				Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+				/*intent.putExtra("username", username);
+				intent.putExtra("password", password);*/
 				startActivity(intent);
 			}
 		});
