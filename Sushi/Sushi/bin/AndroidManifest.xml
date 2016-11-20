@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sushi"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.sushi.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.sushi.MainActivity"
+            android:label="@string/app_name" >
+            
+        </activity>
+        
+        <activity
+            android:name="com.example.sushi_select.shousiActivity"
+            android:label="@string/shousi_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_select.cishenActivity"
+            android:label="@string/cishen_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_select.junjianActivity"
+            android:label="@string/junjian_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_select.fanjuanActivity"
+            android:label="@string/fanjuan_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_select.xiaojuanActivity"
+            android:label="@string/xiaojuan_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_select.qiancaiActivity"
+            android:label="@string/qiancai_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_leader.ChefintentActivity"
+            android:label="@string/indent_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_leader.IntentActivity"
+            android:label="@string/indent_name" >
+        </activity>
+        <activity
+            android:name="com.example.sushi_leader.ShoppingCartActivity"
+            android:label="@string/shoppingcart_name" >
+        </activity>
+    </application>
+
+</manifest>
