@@ -103,6 +103,13 @@
         android:gravity="center" >
 
         <TextView
+            android:id="@+id/zhuce"
+            android:layout_width="84dp"
+            android:layout_height="50dp"
+            android:text="@string/register"
+            android:width="100sp" 
+            android:gravity="center" />
+        <TextView
             android:id="@+id/login"
             android:layout_width="84dp"
             android:layout_height="50dp"
