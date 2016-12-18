@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <!-- <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="50dp"
+         android:text="view1" />-->
+   <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3">
+
+        <ImageView
+            android:id="@+id/imagetitle"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@drawable/fengmian_1" />
+    </RelativeLayout>-->
+    <include
+        android:id="@+id/cell3"
+        layout="@layout/img_list"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_marginBottom="20dp"></include>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/naopiao"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/guimi_1"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/nvpiao"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/naopiao"
+                    android:layout_toRightOf="@+id/naopiao"
+                    android:background="@drawable/baobei_1"
+                    android:layout_weight="1"
+                     />
+
+                <ImageButton
+                    android:id="@+id/fumu"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/nvpiao"
+                    android:layout_toRightOf="@+id/nvpiao"
+                    android:background="@drawable/fumu_1"
+                    android:layout_weight="1"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/baobei"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/jiyou_1"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/jiyou"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/naopiao"
+                    android:layout_toRightOf="@+id/naopiao"
+                    android:background="@drawable/nanpiao_1"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/guimi"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/nvpiao"
+                    android:layout_toRightOf="@+id/nvpiao"
+                    android:background="@drawable/nvpiao_1"
+                    android:layout_weight="1"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <!--第一种方式-->
+    <!-- 可滑动的布局内容 -->
+
+    <!-- <android.support.v4.view.ViewPager
+         android:id="@+id/vp_view"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />
+
+     <android.support.design.widget.TabLayout
+         android:id="@+id/tabs"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:tabIndicatorColor="@color/pink"
+         app:tabSelectedTextColor="@color/pink"
+         app:tabTextColor="@color/white" />-->
+
+    <!--第二种方式-->
+    <!--<android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"></android.support.v4.view.PagerTabStrip>
+        &lt;!&ndash;  底部显示标题与上面的顶部显示不能同时出现
+         <android.support.v4.view.PagerTitleStrip
+             android:id="@+id/title"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="bottom" >
+         </android.support.v4.view.PagerTitleStrip>
+         &ndash;&gt;
+    </android.support.v4.view.ViewPager>-->
+
+
+    <ImageView
+         android:id="@+id/cursor"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:background="#ffffff"
+         android:scaleType="matrix"
+         />
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="362dp"
+        android:layout_weight="1.00"
+        android:background="#ffffff" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="30.0dip"
+        android:background="#ff6666">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="#ea5656"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="#ffffff"
+            android:textSize="18.0dip" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="购物车"
+            android:textColor="#ffffff"
+            android:textSize="18.0dip" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="#ffffff"
+            android:textSize="18.0dip" />
+    </LinearLayout>
+
+
+</LinearLayout>
