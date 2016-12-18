@@ -5,19 +5,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 视图显示内容
- * Created by JC on 2016/12/11.
+ * Created by asus on 2016/12/18.
  */
-
-public class ViewHolder {
+public class LikeHolder {
     ImageView iv_icon;//图标
     TextView tv_title;//名字
     TextView tv_detail;//细节
     TextView tv_price;//价格
-    Button like;
+    Button unlike;
     Button add;
-
-
     public ImageView getIv_icon() {
         return iv_icon;
     }
@@ -42,20 +38,12 @@ public class ViewHolder {
         this.tv_detail = tv_detail;
     }
 
-    public TextView getTv_price() {
-        return tv_price;
+    public Button getUnlike() {
+        return unlike;
     }
 
-    public void setTv_price(TextView tv_price) {
-        this.tv_price = tv_price;
-    }
-
-    public Button getLike() {
-        return like;
-    }
-
-    public void setLike(Button like) {
-        this.like = like;
+    public void setUnlike(Button unlike) {
+        this.unlike = unlike;
     }
 
     public Button getAdd() {
@@ -65,4 +53,14 @@ public class ViewHolder {
     public void setAdd(Button add) {
         this.add = add;
     }
+
+    public TextView getTv_price() {
+        return tv_price;
+    }
+
+    public void setTv_price(TextView tv_price) {
+        this.tv_price = tv_price;
+    }
+
+
 }
