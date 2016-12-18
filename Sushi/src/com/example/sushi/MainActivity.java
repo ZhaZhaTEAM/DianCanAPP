@@ -1,175 +1,144 @@
-package com.example.sushi;
+package com.example.jc.store.com.team.activity;
 
-import com.example.sushi_select.cishenActivity;
-import com.example.sushi_select.fanjuanActivity;
-import com.example.sushi_select.junjianActivity;
-import com.example.sushi_select.qiancaiActivity;
-import com.example.sushi_select.shousiActivity;
-import com.example.sushi_select.xiaojuanActivity;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.text.Layout;
-import android.view.Menu;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.jc.store.R;
+import com.example.jc.store.com.team.bean.MyApplication;
+import com.example.jc.store.com.team.dao.UserDao;
+import com.example.jc.store.com.team.helper.ActivityManagerUtils;
+import com.example.jc.store.com.team.helper.ImportDB;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * 主页面
+ */
 
 public class MainActivity extends Activity {
-	private ImageView imageView1, imageView2, imageView3, imageView4,
-			imageView5, imageView6;
-	private Button shouye, gouwuche, dingdan;
-	private LinearLayout shouyelayout, gouwuchelayout, dingdanlayout;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.leader_layout);
-	imageView1 = (ImageView) findViewById(R.id.shousiView);
-		imageView2 = (ImageView) findViewById(R.id.cishenView);
-		imageView3 = (ImageView) findViewById(R.id.junjianView);
-		imageView4 = (ImageView) findViewById(R.id.fanjuanView);
-		imageView5 = (ImageView) findViewById(R.id.xiaojuanView);
-		imageView6 = (ImageView) findViewById(R.id.qiancaiView);
-		shouye = (Button) findViewById(R.id.shouye);// 首页
-		gouwuche = (Button) findViewById(R.id.gouwuche);// 购物车
-		dingdan = (Button) findViewById(R.id.dingdan);// 订单
-		shouyelayout = (LinearLayout) findViewById(R.id.shouyelayout);
-		gouwuchelayout = (LinearLayout) findViewById(R.id.gouwuchelayout);
-		dingdanlayout = (LinearLayout) findViewById(R.id.dingdanlayout);
+    private TextView textView_register;// "注册"按钮
+    private TextView textView_login;// "登录"按钮
+    private final static int REQUEST_CODE = 1;
+    private EditText usernametext, passwordtext;
 
-		imageView1.setOnClickListener(new OnClickListener() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, shousiActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-		imageView2.setOnClickListener(new OnClickListener() {
+     /*   if (!CacheActivity.activityList.contains(MainActivity.this)) {
+            CacheActivity.addActivity(MainActivity.this);
+        }*/
+        ActivityManagerUtils.getInstance().addActivity(this);
+        //initAssets("store.db");// 读取数据库文件
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, cishenActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-		imageView3.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, junjianActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-		imageView4.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, fanjuanActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-		imageView5.setOnClickListener(new OnClickListener() {
+        // WriteDB writeDB=new WriteDB(this);
+        // writeDB.write();
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, xiaojuanActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-		imageView6.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, qiancaiActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
+        textView_register = (TextView) findViewById(R.id.register);
+        textView_login = (TextView) findViewById(R.id.login);
+        usernametext = (EditText) findViewById(R.id.usernametext);
+        passwordtext = (EditText) findViewById(R.id.passwordtext);
+        // 跳转到"注册"页面
+        textView_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
 
-		// 首页按钮监听
-		shouye.setOnClickListener(new OnClickListener() {
+        // 跳转到"登录"页面
+        textView_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 账户
+                // usernametext = (EditText) findViewById(R.id.usernametext);
+                String username = usernametext.getText().toString().trim();
+                // 密码
+                //  passwordtext = (EditText) findViewById(R.id.passwordtext);
+                String password = passwordtext.getText().toString().trim();
+                if ("".equals(username)) {
+                    Toast.makeText(MainActivity.this, "账户不能为空",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if ("".equals(password)) {
+                    Toast.makeText(MainActivity.this, "密码不能为空",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                UserDao userDao = new UserDao(MainActivity.this);
+                boolean isexist = userDao.findUserAndPass(username, password);
 
-			@Override
-			public void onClick(View v) {
-				// 将购物车的层次隐藏
-				if (gouwuchelayout.getVisibility() == 0) {
-					gouwuchelayout.setVisibility(View.GONE);
-				}
-				// 将订单的层次隐藏
-				if (dingdanlayout.getVisibility() == 0) {
-					dingdanlayout.setVisibility(View.GONE);
-				}
-				// 将首页层次显示
-				shouyelayout.setVisibility(View.VISIBLE);
-			}
-		});
 
-		// 购物车按钮监听
-		gouwuche.setOnClickListener(new OnClickListener() {
+                if (!isexist) {
+                    Toast.makeText(MainActivity.this, "账户和密码不匹配",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                MyApplication myApplication = (MyApplication) getApplication();
+                myApplication.setUsername(username);
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("username", username);
+                bundle.putString("password", password);
+                intent.putExtras(bundle);
+                intent.setClass(MainActivity.this, LoginSuccessActivity.class);
+                startActivity(intent);
+                ActivityManagerUtils.getInstance().finishActivity(MainActivity.this);
+                //finish();
+            }
+        });
 
-			@Override
-			public void onClick(View v) {
+    }
 
-				// 将首页层次显示
-				if (shouyelayout.getVisibility() ==0) {
-					shouyelayout.setVisibility(View.GONE);
-				}
-				// 将订单的层次隐藏
-				if (dingdanlayout.getVisibility() == 0) {
-					dingdanlayout.setVisibility(View.GONE);
-				}
-				// 将购物车的层次隐藏
-				gouwuchelayout.setVisibility(View.VISIBLE);
-			}
-		});
-
-		// 订单按钮监听
-		dingdan.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// 将首页层次显示
-				if (shouyelayout.getVisibility() == 0) {
-					shouyelayout.setVisibility(View.GONE);
-				}
-				// 将购物车的层次隐藏
-				if (gouwuchelayout.getVisibility() ==0) {
-					gouwuchelayout.setVisibility(View.GONE);
-				}
-				// 将订单的层次隐藏
-				dingdanlayout.setVisibility(View.VISIBLE);
-			}
-		});
-
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+    /**
+     * 读取文件
+     *
+     * @param dbName
+     */
+    private void initAssets(String dbName) {
+        File filesDir = getFilesDir();
+        File file = new File(filesDir, dbName);
+        if (file.exists()) {
+            return;
+        }
+        InputStream is = null;
+        FileOutputStream fos = null;
+        try {
+            is = getAssets().open(dbName);
+            fos = new FileOutputStream(file);
+            byte[] b = new byte[1024];
+            int temp = -1;
+            while ((temp = is.read(b)) != -1) {
+                fos.write(b, 0, temp);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null && fos != null) {
+                try {
+                    is.close();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }
